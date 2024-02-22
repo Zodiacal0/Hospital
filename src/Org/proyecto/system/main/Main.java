@@ -18,6 +18,8 @@ public class Main {
         LoginJF login1 = new LoginJF();
         login1.setVisible(true);
         login1.setLocationRelativeTo(null);
+        
+        System.out.println("Prueba");
     }
     
 }
