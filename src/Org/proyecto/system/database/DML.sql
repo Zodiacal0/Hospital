@@ -67,3 +67,32 @@ CALL sp_actualizarAdministradorCodigo(0001);
 -- SELECT * FROM Administrador;
 
 -- CRUD de Doctores
+DELIMITER $$
+CREATE PROCEDURE sp_agregarDoctor(IN idDoctor INT (4), IN nombreDoctor VARCHAR(32),IN apellidoDoctor VARCHAR(32),IN especialidad VARCHAR(32), IN sexo CHAR,IN edad INT(2),IN telefono INT(8),IN contraseña VARCHAR(32))
+BEGIN
+	INSERT INTO Doctor(idDoctor,nombreDoctor,apellidoDoctor,especialidad,edad,telefono,sexo,contraseña)
+		VALUES(idDoctor,nombreDoctor,apellidoDoctor,especialidad,edad,telefono,sexo,contraseña);
+END$$
+DELIMITER ;
+
+CALL sp_agregarDoctor(0001,'Rafael','Córdoba','Urología','M','24',12345678,'pass123');
+
+CREATE VIEW vw_listarDoctores AS
+SELECT nombreDoctor,apellidoDoctor,especialidad,telefono,edad,sexo,contraseña
+FROM Doctor;
+
+SELECT * FROM vw_listarDoctores;
+
+DELIMITER $$
+CREATE PROCEDURE sp_actualizarDoctores(IN idDoctorBusqueda INT (4), IN newNombreDoctor VARCHAR(32),IN newApellidoDoctor VARCHAR(32),IN newEspecialidad VARCHAR(32),IN newEdad INT(2),IN newTelefono INT(8),IN newContraseña VARCHAR(32))
+BEGIN
+	UPDATE Doctor
+    SET nombreDoctor = newNombreDoctor, apellidoDoctor = newApellidoDoctor, especialidad = newEspecialidad, edad = newEdad, telefono = newTelefono, contraseña = newContraseña
+    WHERE idDoctor = idDoctorBusqueda;
+END$$
+DELIMITER ;
+
+CALL sp_actualizarDoctores(0001,'Javier','Córdoba','Neurología','27',23456789,'dispo');
+
+-- Falta crud doctores (Eliminar,Buscar)
+-- Falta CRUD completo pacientes
