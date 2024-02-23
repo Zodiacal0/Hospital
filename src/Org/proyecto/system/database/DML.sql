@@ -94,5 +94,76 @@ DELIMITER ;
 
 CALL sp_actualizarDoctores(0001,'Javier','Córdoba','Neurología','27',23456789,'dispo');
 
--- Falta crud doctores (Eliminar,Buscar)
--- Falta CRUD completo pacientes
+
+DELIMITER $$
+CREATE PROCEDURE sp_eliminarDoctor(IN idDoctorEliminar INT(4))
+BEGIN
+	DELETE FROM Doctor
+	WHERE idDoctor = idDoctorEliminar;
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE PROCEDURE sp_buscarDoctor(IN idDoctorBusqueda INT(4))
+BEGIN
+	SELECT nombreDoctor,apellidoDoctor,especialidad,contraseña,sexo,edad,telefono
+    FROM Doctor
+	WHERE idDoctor = idDoctorBusqueda;
+END$$
+DELIMITER ;
+
+
+--  CRUD completo pacientes
+
+DELIMITER $$
+CREATE PROCEDURE sp_crearPaciente(IN idPaciente INT(4), IN nombrePaciente VARCHAR(32), IN apellidoPaciente VARCHAR(32), IN edad INT(2),IN sexo CHAR,IN contraseña VARCHAR(32))
+BEGIN
+	INSERT INTO Pacientes(idPaciente,nombrePaciente,apellidoPaciente,edad,sexo,contraseña)
+		VALUES(idPaciente,nombrePaciente,apellidoPaciente,edad,sexo,contraseña);
+END$$
+DELIMITER ;
+ 
+ CALL sp_crearPaciente(0001,'Erick','Toyom',26,'M','wbos');
+ 
+ DELIMITER $$
+ CREATE PROCEDURE sp_listarPaciente()
+ BEGIN
+	SELECT idPaciente,nombrePaciente,apellidoPaciente,edad,sexo,contraseña
+    FROM Pacientes;
+ END$$
+ DELIMITER ;
+ 
+ CALL sp_listarPaciente();
+ 
+ DELIMITER $$
+ CREATE PROCEDURE sp_actualizarPaciente(IN idPacienteActualizar INT(4), IN newNombrePaciente VARCHAR(32), IN newApellidoPaciente VARCHAR(32), IN newEdad INT(2),IN newContraseña VARCHAR(32))
+ BEGIN
+	UPDATE Pacientes
+    SET nombrePaciente = newNombrePaciente, apellidoPaciente = newApellidoPaciente, edad = newEdad, contraseña = newContraseña
+    WHERE idPaciente = idPacienteActualizar;
+ END$$ 
+ DELIMITER ;
+ 
+ CALL sp_actualizarPaciente(0001,'ERICK','CAMBIÓ',36,'wbosNEW');
+ 
+ DELIMITER $$
+ CREATE PROCEDURE sp_buscarPaciente(IN idPaciente INT(4))
+ BEGIN
+	SELECT idPaciente,nombrePaciente,apellidoPaciente,edad,sexo,contraseña
+    FROM Pacientes
+    WHERE idPaciente = idPaciente;
+ END$$
+ DELIMITER ;
+ 
+ CALL sp_buscarPaciente(0001);
+ 
+ DELIMITER $$
+ CREATE PROCEDURE sp_eliminarPaciente(IN idPaciente INT(4))
+ BEGIN
+	DELETE FROM Pacientes
+	WHERE idPaciente = idPaciente;
+ END$$
+ DELIMITER ;
+ 
+ CALL sp_eliminarPaciente(0001);
+ 
