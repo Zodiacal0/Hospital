@@ -13,17 +13,19 @@ public class Doctor {
     public Doctor() {
     }
     
-    private String nombres;
-    private String apellidos;
+    private int idDoctor;
+    private String nombreDoctor;
+    private String apellidoDoctor;
     private String especialidad;
     private String contrasena;
     private char sexo;
     private int edad;
     private int telefono;
 
-    public Doctor(String nombres, String apellidos, String especialidad, String contrasena, char sexo, int edad, int telefono) {
-        this.nombres = nombres;
-        this.apellidos = apellidos;
+    public Doctor(int idDoctor, String nombreDoctor, String apellidoDoctor, String especialidad, String contrasena, char sexo, int edad, int telefono) {
+        this.idDoctor = idDoctor;
+        this.nombreDoctor = nombreDoctor;
+        this.apellidoDoctor = apellidoDoctor;
         this.especialidad = especialidad;
         this.contrasena = contrasena;
         this.sexo = sexo;
@@ -31,20 +33,28 @@ public class Doctor {
         this.telefono = telefono;
     }
 
-    public String getNombres() {
-        return nombres;
+    public int getIdDoctor() {
+        return idDoctor;
     }
 
-    public void setNombres(String nombres) {
-        this.nombres = nombres;
+    public void setIdDoctor(int idDoctor) {
+        this.idDoctor = idDoctor;
     }
 
-    public String getApellidos() {
-        return apellidos;
+    public String getNombreDoctor() {
+        return nombreDoctor;
     }
 
-    public void setApellidos(String apellidos) {
-        this.apellidos = apellidos;
+    public void setNombreDoctor(String nombreDoctor) {
+        this.nombreDoctor = nombreDoctor;
+    }
+
+    public String getApellidoDoctor() {
+        return apellidoDoctor;
+    }
+
+    public void setApellidoDoctor(String apellidoDoctor) {
+        this.apellidoDoctor = apellidoDoctor;
     }
 
     public String getEspecialidad() {
@@ -87,7 +97,5 @@ public class Doctor {
         this.telefono = telefono;
     }
     
-    
-
-    
 }
+    
