@@ -1,10 +1,13 @@
 DROP DATABASE IF EXISTS DB_ProyectoHospital;
 CREATE DATABASE DB_ProyectoHospital;
+USE DB_ProyectoHospital;
 
 CREATE TABLE Administrador(
 	idAdministrador INT(4) NOT NULL,
     nombreAdmin VARCHAR(32),
     apellidoAdmin VARCHAR(32),
+    contraseñaAdmin VARCHAR(32),
+    codigoLogin INT(4),
     PRIMARY KEY PK_idAdministrador (idAdministrador)
 )ENGINE InnoDB;
 
