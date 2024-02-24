@@ -50,6 +50,18 @@ DELIMITER ;
 
 CALL sp_buscarAdministrador(0001);
 
+
+/* 	PROCEDIMIENTO PARA LA VALIDADCION DE LA ELIMINACIÓN DE DOCTOR*/
+
+DELIMITER $$
+CREATE PROCEDURE sp_validacionD(IN pass VARCHAR (32))
+BEGIN
+	SELECT COUNT(*)
+    FROM Administrador
+	WHERE contraseñaAdmin = pass;
+END$$
+DELIMITER ;
+
 -- FIN DEL CRUD
 
 
@@ -190,3 +202,4 @@ DELIMITER ;
  DELIMITER ;
  
  CALL sp_eliminarPaciente(0001);
+ 
