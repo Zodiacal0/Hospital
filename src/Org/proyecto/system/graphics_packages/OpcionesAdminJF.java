@@ -86,6 +86,11 @@ public class OpcionesAdminJF extends javax.swing.JFrame {
         deleteDoctor.setBackground(new java.awt.Color(102, 102, 102));
         deleteDoctor.setForeground(new java.awt.Color(255, 255, 255));
         deleteDoctor.setText("ELiminar Doctores");
+        deleteDoctor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteDoctorActionPerformed(evt);
+            }
+        });
 
         searchDoctor.setBackground(new java.awt.Color(102, 102, 102));
         searchDoctor.setForeground(new java.awt.Color(255, 255, 255));
@@ -165,6 +170,13 @@ public class OpcionesAdminJF extends javax.swing.JFrame {
         agregarPacientes.setVisible(true);
         agregarPacientes.setLocationRelativeTo(null);
     }//GEN-LAST:event_dorctorAddActionPerformed
+
+    private void deleteDoctorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteDoctorActionPerformed
+        dispose();
+        EliminarDoctorJF eliminar = new EliminarDoctorJF();
+        eliminar.setVisible(true);
+        eliminar.setLocationRelativeTo(null);
+    }//GEN-LAST:event_deleteDoctorActionPerformed
 
    
 

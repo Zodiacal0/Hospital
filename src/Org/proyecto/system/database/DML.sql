@@ -62,7 +62,16 @@ BEGIN
 END$$
 DELIMITER ;
 
-CALL sp_validacion('admin','áss123');
+CALL sp_validacion('admin','pass123');
+
+DELIMITER $$
+CREATE PROCEDURE sp_validacionAdminPass(IN pass VARCHAR (32))
+BEGIN
+	SELECT COUNT(*)
+    FROM Administrador
+	WHERE contraseñaAdmin = pass;
+END$$
+DELIMITER ;
 
 DELIMITER $$
 	CREATE TRIGGER tr_Administrador_After_Update
@@ -99,14 +108,14 @@ BEGIN
 END$$
 DELIMITER ;
 
-CALL sp_agregarDoctor(0001,'Rafael','Córdoba','Urología','M','24',12345678,'pass123');
+CALL sp_agregarDoctor(0002,'Rafael','Córdoba','Urología','M','24',12345678,'pass123');
 
 CREATE VIEW vw_listarDoctores AS
 SELECT nombreDoctor,apellidoDoctor,especialidad,telefono,edad,sexo,contraseña
-FROM Doctor;
+FROM Doctor;	
 
 SELECT * FROM vw_listarDoctores;
-
+select * from Doctor;
 DELIMITER $$
 CREATE PROCEDURE sp_actualizarDoctores(IN idDoctorBusqueda INT (4), IN newNombreDoctor VARCHAR(32),IN newApellidoDoctor VARCHAR(32),IN newEspecialidad VARCHAR(32),IN newEdad INT(2),IN newTelefono INT(8),IN newContraseña VARCHAR(32))
 BEGIN
@@ -118,12 +127,13 @@ DELIMITER ;
 
 CALL sp_actualizarDoctores(0001,'Javier','Córdoba','Neurología','27',23456789,'dispo');
 
+-- !!!DUDA
 
 DELIMITER $$
-CREATE PROCEDURE sp_eliminarDoctor(IN idDoctorEliminar INT(4))
+CREATE PROCEDURE sp_eliminarDoctor(IN idDoctorEliminar INT(4), IN nombreDoctor VARCHAR(32))
 BEGIN
 	DELETE FROM Doctor
-	WHERE idDoctor = idDoctorEliminar;
+	WHERE idDoctor = idDoctorEliminar AND nombreDoctor = nombreDoctor;
 END$$
 DELIMITER ;
 
