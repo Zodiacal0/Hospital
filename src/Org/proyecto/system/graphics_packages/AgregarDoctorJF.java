@@ -11,12 +11,12 @@ import javax.swing.JOptionPane;
  *
  * @author Javier
  */
-public class AgregarDoctor extends javax.swing.JFrame {
+public class AgregarDoctorJF extends javax.swing.JFrame {
 
     /**
      * Creates new form LoginPrincipal
      */
-    public AgregarDoctor() {
+    public AgregarDoctorJF() {
         initComponents();
     }
 
