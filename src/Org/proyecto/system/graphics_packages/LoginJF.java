@@ -4,6 +4,7 @@
  */
 package Org.proyecto.system.graphics_packages;
 
+import Org.proyecto.system.controller.LoginControllerAdmin;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -153,44 +154,20 @@ public class LoginJF extends javax.swing.JFrame {
     }//GEN-LAST:event_userTxtActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        String userName = userTxt.getText();
-        String userPass = new String(password.getPassword());
-        String rutaArchivo = "C:\\Users\\Javier\\OneDrive - Fundación Kinal -Alumnos-\\Desktop\\ProyectoHospital\\src\\Org\\proyecto\\system\\utilities\\Credenciales.txt";
-        boolean usuarioValido = false;
+        String nombreUsuario = userTxt.getText();
+        String contraseña = password.getText();
 
-        try {
-            File archivo = new File(rutaArchivo);
-            FileReader reader = new FileReader(archivo);
-            BufferedReader bufferLector = new BufferedReader(reader);
+        LoginControllerAdmin loginController = new LoginControllerAdmin();
 
-            String linea;
-            while ((linea = bufferLector.readLine()) != null) {
-                String[] partes = linea.split(":");
-                if (partes.length == 2) {
-                    String usuarioArchivo = partes[0];
-                    String contrasenaArchivo = partes[1];
-                    if (usuarioArchivo.equals(userName) && contrasenaArchivo.equals(userPass)) {
-                        usuarioValido = true;
-                        break;
-                    }
-                }
-            }
-
-            bufferLector.close();
-            reader.close();
-
-            if (usuarioValido) {
-                JOptionPane.showMessageDialog(this, "Inicio de sesión exitoso", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-                dispose();
-                AgregarPacientes agregarPaciente = new AgregarPacientes();
-                agregarPaciente.setVisible(true);
-                agregarPaciente.setLocationRelativeTo(null);
-            } else {
-                JOptionPane.showMessageDialog(this, "Nombre de usuario o contraseña incorrectos", "Error", JOptionPane.ERROR_MESSAGE);
-            }
-        } catch (IOException ex) {
-            JOptionPane.showMessageDialog(this, "Error al leer el archivo: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-        }    
+        if (loginController.Validacion(nombreUsuario, contraseña)) {
+            JOptionPane.showMessageDialog(this, "Inicio de sesión exitoso", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+            dispose();
+            AgregarPacientes agregarPacientes = new AgregarPacientes();
+            agregarPacientes.setVisible(true);
+            agregarPacientes.setLocationRelativeTo(null);
+        } else {
+            JOptionPane.showMessageDialog(this, "Credenciales incorrectas", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void RegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterActionPerformed
