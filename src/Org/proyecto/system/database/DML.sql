@@ -53,17 +53,27 @@ CALL sp_buscarAdministrador(0001);
 -- FIN DEL CRUD
 
 
--- PRODECIMIENTO DE VALIDACIÓN ADMIN
 DELIMITER $$
-CREATE PROCEDURE sp_validacion(IN userAdmin VARCHAR(32), IN pass VARCHAR(32))
+CREATE PROCEDURE sp_validacion(IN userAdmin VARCHAR(32), IN pass VARCHAR (32))
 BEGIN
 	SELECT COUNT(*)
     FROM Administrador
-    WHERE nombreAdmin = userAdmin AND contraseñaAdmin = pass;
+	WHERE nombreAdmin = userAdmin AND contraseñaAdmin = pass;
 END$$
 DELIMITER ;
 
-CALL sp_validacion('admin','pass123');
+CALL sp_validacion('admin','áss123');
+
+DELIMITER $$
+	CREATE TRIGGER tr_Administrador_After_Update
+	AFTER UPDATE ON Administrador
+	FOR EACH ROW
+		BEGIN
+			UPDATE Administrador
+			SET codigoLogin = FLOOR(((9999 - 0001) * RAND() + 1))
+			WHERE idAdministrador = idAdministradorCodigo;
+		END $$
+delimiter ; 
 
 
 -- PROCEDIMIENTO QUE ACTUALIZA EL "ID DE LOGIN" DE ADMINISTRADOR
@@ -180,4 +190,3 @@ DELIMITER ;
  DELIMITER ;
  
  CALL sp_eliminarPaciente(0001);
- 
