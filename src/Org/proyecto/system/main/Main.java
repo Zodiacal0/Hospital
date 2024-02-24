@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
 package Org.proyecto.system.main;
-import Org.proyecto.system.graphics_packages.LoginJF;
+import Org.proyecto.system.graphics_packages.LoginAdminJF;
 /**
  *
  * @author Javier
@@ -15,7 +15,7 @@ public class Main {
      */
     public static void main(String[] args) {
         
-        LoginJF login1 = new LoginJF();
+        LoginAdminJF login1 = new LoginAdminJF();
         login1.setVisible(true);
         login1.setLocationRelativeTo(null);
         
