@@ -2,9 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package Org.proyecto.system.graphics_packages;
+package Org.proyecto.system.graphics_packages.DoctorJF;
 
 import Org.proyecto.system.controller.ActualizarDoctorController;
+import Org.proyecto.system.graphics_packages.OpcionesAdminJF;
 import javax.swing.JOptionPane;
 
 /**
