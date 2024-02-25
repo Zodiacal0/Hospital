@@ -4,6 +4,11 @@
  */
 package Org.proyecto.system.graphics_packages;
 
+import Org.proyecto.system.graphics_packages.DoctorJF.ActualizarDoctor;
+import Org.proyecto.system.graphics_packages.DoctorJF.AgregarDoctorJF;
+import Org.proyecto.system.graphics_packages.DoctorJF.EliminarDoctorJF;
+import Org.proyecto.system.graphics_packages.DoctorJF.ListarDoctoresJF;
+
 /**
  *
  * @author Javier
@@ -87,6 +92,11 @@ public class OpcionesAdminJF extends javax.swing.JFrame {
         showDoctor.setBackground(new java.awt.Color(102, 102, 102));
         showDoctor.setForeground(new java.awt.Color(255, 255, 255));
         showDoctor.setText("Listar Doctores");
+        showDoctor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showDoctorActionPerformed(evt);
+            }
+        });
 
         deleteDoctor.setBackground(new java.awt.Color(102, 102, 102));
         deleteDoctor.setForeground(new java.awt.Color(255, 255, 255));
@@ -189,6 +199,13 @@ public class OpcionesAdminJF extends javax.swing.JFrame {
         actualizar.setVisible(true);
         actualizar.setLocationRelativeTo(null);
     }//GEN-LAST:event_updateDoctorActionPerformed
+
+    private void showDoctorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showDoctorActionPerformed
+        dispose();
+        ListarDoctoresJF listar = new ListarDoctoresJF();
+        listar.setVisible(true);
+        listar.setLocationRelativeTo(null);
+    }//GEN-LAST:event_showDoctorActionPerformed
 
    
 
