@@ -161,7 +161,7 @@ public class ListarDoctoresJF extends javax.swing.JFrame {
              Statement statement = connection.createStatement();
              ResultSet resultSet = statement.executeQuery(query)) {
 
-            // Agregar columnas al modelo
+            
             model.addColumn("Nombre");
             model.addColumn("Apellido");
             model.addColumn("Especialidad");
@@ -170,7 +170,7 @@ public class ListarDoctoresJF extends javax.swing.JFrame {
             model.addColumn("Sexo");
             model.addColumn("Contraseña");
 
-            // Agregar filas al modelo
+            
             while (resultSet.next()) {
                 String nombreDoctor = resultSet.getString("nombreDoctor");
                 String apellidoDoctor = resultSet.getString("apellidoDoctor");
