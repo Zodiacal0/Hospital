@@ -78,6 +78,11 @@ public class OpcionesAdminJF extends javax.swing.JFrame {
         updateDoctor.setBackground(new java.awt.Color(102, 102, 102));
         updateDoctor.setForeground(new java.awt.Color(255, 255, 255));
         updateDoctor.setText("Actualizar Doctor");
+        updateDoctor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateDoctorActionPerformed(evt);
+            }
+        });
 
         showDoctor.setBackground(new java.awt.Color(102, 102, 102));
         showDoctor.setForeground(new java.awt.Color(255, 255, 255));
@@ -166,9 +171,9 @@ public class OpcionesAdminJF extends javax.swing.JFrame {
 
     private void dorctorAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dorctorAddActionPerformed
         dispose();
-        AgregarPacientesJF agregarPacientes = new AgregarPacientesJF();
-        agregarPacientes.setVisible(true);
-        agregarPacientes.setLocationRelativeTo(null);
+        AgregarDoctorJF agregarDoctor = new AgregarDoctorJF();
+        agregarDoctor.setVisible(true);
+        agregarDoctor.setLocationRelativeTo(null);
     }//GEN-LAST:event_dorctorAddActionPerformed
 
     private void deleteDoctorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteDoctorActionPerformed
@@ -177,6 +182,13 @@ public class OpcionesAdminJF extends javax.swing.JFrame {
         eliminar.setVisible(true);
         eliminar.setLocationRelativeTo(null);
     }//GEN-LAST:event_deleteDoctorActionPerformed
+
+    private void updateDoctorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateDoctorActionPerformed
+        dispose();
+        ActualizarDoctor actualizar = new ActualizarDoctor();
+        actualizar.setVisible(true);
+        actualizar.setLocationRelativeTo(null);
+    }//GEN-LAST:event_updateDoctorActionPerformed
 
    
 

@@ -40,7 +40,6 @@ public class LoginAdminJF extends javax.swing.JFrame {
         password = new javax.swing.JPasswordField();
         jSeparator3 = new javax.swing.JSeparator();
         jButton2 = new javax.swing.JButton();
-        Register = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -115,17 +114,7 @@ public class LoginAdminJF extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        bg.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 90, 130, 50));
-
-        Register.setBackground(new java.awt.Color(102, 102, 102));
-        Register.setForeground(new java.awt.Color(255, 255, 255));
-        Register.setText("Registrarse");
-        Register.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RegisterActionPerformed(evt);
-            }
-        });
-        bg.add(Register, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 170, 130, 50));
+        bg.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 140, 130, 50));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -166,19 +155,11 @@ public class LoginAdminJF extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void RegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterActionPerformed
-        dispose();
-        AgregarDoctorJF agregarDoctor = new AgregarDoctorJF();
-        agregarDoctor.setVisible(true);
-        agregarDoctor.setLocationRelativeTo(null);
-    }//GEN-LAST:event_RegisterActionPerformed
-
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Register;
     private javax.swing.JPanel bg;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
