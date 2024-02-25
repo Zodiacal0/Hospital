@@ -229,6 +229,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Buscar Doctores"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="searchDoctorActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>

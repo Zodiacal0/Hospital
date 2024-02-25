@@ -6,6 +6,7 @@ package Org.proyecto.system.graphics_packages;
 
 import Org.proyecto.system.graphics_packages.DoctorJF.ActualizarDoctor;
 import Org.proyecto.system.graphics_packages.DoctorJF.AgregarDoctorJF;
+import Org.proyecto.system.graphics_packages.DoctorJF.BuscarDoctor;
 import Org.proyecto.system.graphics_packages.DoctorJF.EliminarDoctorJF;
 import Org.proyecto.system.graphics_packages.DoctorJF.ListarDoctoresJF;
 
@@ -110,6 +111,11 @@ public class OpcionesAdminJF extends javax.swing.JFrame {
         searchDoctor.setBackground(new java.awt.Color(102, 102, 102));
         searchDoctor.setForeground(new java.awt.Color(255, 255, 255));
         searchDoctor.setText("Buscar Doctores");
+        searchDoctor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchDoctorActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -206,6 +212,13 @@ public class OpcionesAdminJF extends javax.swing.JFrame {
         listar.setVisible(true);
         listar.setLocationRelativeTo(null);
     }//GEN-LAST:event_showDoctorActionPerformed
+
+    private void searchDoctorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchDoctorActionPerformed
+        dispose();
+        BuscarDoctor buscar = new BuscarDoctor();
+        buscar.setVisible(true);
+        buscar.setLocationRelativeTo(null);
+    }//GEN-LAST:event_searchDoctorActionPerformed
 
    
 
