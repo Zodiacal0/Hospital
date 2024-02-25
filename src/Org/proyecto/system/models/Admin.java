@@ -66,5 +66,4 @@ public class Admin {
         this.codigo = codigo;
     }
     
-    
 }
