@@ -120,7 +120,7 @@ BEGIN
 END$$
 DELIMITER ;
 
-CALL sp_agregarDoctor(0002,'Rafael','Córdoba','Urología','M','24',12345678,'pass123');
+CALL sp_agregarDoctor(0001,'Rafael','Córdoba','Urología','M','24',12345678,'pass123');
 
 CREATE VIEW vw_listarDoctores AS
 SELECT nombreDoctor,apellidoDoctor,especialidad,telefono,edad,sexo,contraseña
@@ -137,7 +137,9 @@ BEGIN
 END$$
 DELIMITER ;
 
-CALL sp_actualizarDoctores(0001,'Javier','Córdoba','Neurología','27',23456789,'dispo');
+SELECT * FROM Doctor;
+
+CALL sp_actualizarDoctores(0002,'Javier','Córdoba','Neurología','27',23456789,'dispo');
 
 -- !!!DUDA
 
