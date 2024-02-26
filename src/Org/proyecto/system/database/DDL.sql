@@ -23,6 +23,17 @@ CREATE TABLE Doctor(
     PRIMARY KEY PK_idDoctor (idDoctor)
 )ENGINE InnoDB;
 
+CREATE TABLE Citas(
+	idCita INT(4),
+    motivo VARCHAR(255),
+    especialidadRequerida VARCHAR(32),
+    doctorRequerido VARCHAR(32),
+    fecha date,
+    hora time,
+    estado VARCHAR(32),
+    PRIMARY KEY PK_idCita (idCita)    
+)ENGINE InnoDB;
+
 CREATE TABLE Pacientes(
 	idPaciente INT(4) NOT NULL,
     nombrePaciente  VARCHAR(32),
@@ -30,5 +41,9 @@ CREATE TABLE Pacientes(
     edad INT(2),
     sexo CHAR,
     contraseña VARCHAR(32),
-    PRIMARY KEY PK_idPaciente (idPaciente)
+    idCita INT(4),
+    PRIMARY KEY PK_idPaciente (idPaciente),
+    CONSTRAINT FK_idCita FOREIGN KEY (idCita) 
+		REFERENCES Citas (idCita)
 )ENGINE InnoDB;
+

@@ -127,6 +127,8 @@ SELECT nombreDoctor,apellidoDoctor,especialidad,telefono,edad,sexo,contraseña
 FROM Doctor;	
 
 SELECT * FROM vw_listarDoctores;
+
+
 select * from Doctor;
 DELIMITER $$
 CREATE PROCEDURE sp_actualizarDoctores(IN idDoctorBusqueda INT (4), IN newNombreDoctor VARCHAR(32),IN newApellidoDoctor VARCHAR(32),IN newEspecialidad VARCHAR(32),IN newEdad INT(2),IN newTelefono INT(8),IN newContraseña VARCHAR(32))
@@ -215,3 +217,48 @@ DELIMITER ;
  
  CALL sp_eliminarPaciente(0001);
  
+ DELIMITER $$
+CREATE PROCEDURE sp_validacionPacientes(IN userPaciente VARCHAR(32), IN pass VARCHAR (32))
+BEGIN
+	SELECT COUNT(*)
+    FROM Pacientes
+	WHERE nombrePaciente = userPaciente AND contraseña = pass;
+END$$
+DELIMITER ;
+
+-- CRUD citas
+
+DELIMITER $$
+CREATE PROCEDURE sp_crearCita(IN idCita int, IN motivo VARCHAR(255),IN especialidadRequerida VARCHAR(32), IN doctorRequerido VARCHAR(32),IN fecha date, IN hora time, IN estado VARCHAR(32))
+BEGIN
+	INSERT INTO Citas(idCita,motivo,especialidadRequerida,doctorRequerido,fecha,hora,estado)
+		VALUES(idCita,motivo,especialidadRequerida,doctorRequerido,fecha,hora,estado);
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE PROCEDURE sp_listarCitas()
+BEGIN
+	SELECT idCita,motivo,especialidadRequerida,doctorRequerido,fecha,hora
+    FROM Citas;
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE PROCEDURE sp_updateCitas(IN idCita int, IN newMotivo VARCHAR(255),IN newEspecialidadRequerida VARCHAR(32), IN newDoctorRequerido VARCHAR(32),IN newFecha date, IN newHora time,in newEstado VARCHAR(32))
+BEGIN
+	UPDATE Citas
+    SET  motivo = newMotivo, especialidadRequerida = newEspecialidadRequerida, doctorRequerido = newDoctorRequerido, fecha = newFecha, hora = newHora, estado = newEstado
+    WHERE idCita = idCita;
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE PROCEDURE sp_listarHorario(IN hora time)
+BEGIN
+	SELECT idCita,motivo,especialidadRequerida,doctorRequerido,fecha,hora
+    FROM Citas
+    WHERE hora = hora;
+END $$
+DELIMITER ;
+
