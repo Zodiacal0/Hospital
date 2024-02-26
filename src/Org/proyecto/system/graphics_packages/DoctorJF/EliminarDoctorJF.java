@@ -4,7 +4,7 @@
  */
 package Org.proyecto.system.graphics_packages.DoctorJF;
 
-import Org.proyecto.system.controller.EliminarDoctorController;
+import Org.proyecto.system.controller.DoctorController.EliminarDoctorController;
 import Org.proyecto.system.graphics_packages.OpcionesAdminJF;
 import javax.swing.JOptionPane;
 
