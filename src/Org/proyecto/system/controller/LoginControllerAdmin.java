@@ -4,6 +4,7 @@
  */
 package Org.proyecto.system.controller;
 
+import Org.proyecto.system.conexion.ConexionDB;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -20,8 +21,9 @@ public class LoginControllerAdmin {
     }
     
     public static boolean Validacion(String username, String pass){
+        Connection conn = null;
         try {
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/DB_ProyectoHospital", "root", "Aurorita0306@");
+            conn = ConexionDB.getConnection(); 
             PreparedStatement stmt = conn.prepareStatement("CALL sp_validacion(?,?)");
             stmt.setString(1, username);
             stmt.setString(2, pass);

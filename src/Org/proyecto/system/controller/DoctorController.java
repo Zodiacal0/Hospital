@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Org.proyecto.system.controller;
+import Org.proyecto.system.conexion.ConexionDB;
 import java.sql.*;
 import java.util.Random;
 /**
@@ -15,9 +16,11 @@ public class DoctorController {
     }
     
     public static void AgregarDoctor(String nombre, String apellido, String genero, int edad, String especialidad, int telefono, String contraseña) {
+        Connection conn = null;
+        CallableStatement stmt = null;
         try {
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/DB_ProyectoHospital", "root", "Aurorita0306@");
-            CallableStatement stmt = conn.prepareCall("{CALL sp_agregarDoctor(?, ?, ?, ?, ?, ?, ?, ?)}");
+            conn = ConexionDB.getConnection(); 
+            stmt = conn.prepareCall("{CALL sp_agregarDoctor(?, ?, ?, ?, ?, ?, ?, ?)}");
 
             Random random = new Random();
             int idDoctor = random.nextInt(10000);
@@ -32,13 +35,22 @@ public class DoctorController {
             stmt.setString(8, contraseña);
 
             stmt.execute();
-            stmt.close();
-            conn.close();
-            
         } catch (SQLException e) {
             System.out.println("Error al agregar doctor: " + e.getMessage());
+        } finally {
+            try {
+                if (stmt != null) {
+                    stmt.close();
+                }
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (SQLException e) {
+                System.out.println("Error al cerrar la conexión: " + e.getMessage());
+            }
         }
     }
+
 
     
 }

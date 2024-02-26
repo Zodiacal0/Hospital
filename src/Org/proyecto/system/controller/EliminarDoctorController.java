@@ -4,6 +4,7 @@
  */
 package Org.proyecto.system.controller;
 
+import Org.proyecto.system.conexion.ConexionDB;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -20,11 +21,15 @@ public class EliminarDoctorController {
     public EliminarDoctorController() {
     }
     
-    public static boolean Eliminar(int idDoc,String nombreDoc,String passAdmin){
-        try {
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/DB_ProyectoHospital", "root", "Aurorita0306@");
+    public static boolean Eliminar(int idDoc, String nombreDoc, String passAdmin) {
+        Connection conn = null;
+        CallableStatement stmtValidacion = null;
+        CallableStatement stmtValidarPass = null;
 
-            CallableStatement stmtValidacion = conn.prepareCall("{CALL sp_eliminarDoctor(?, ?)}"); /*Busca Variables en la DB*/
+        try {
+            conn = ConexionDB.getConnection(); 
+
+            stmtValidacion = conn.prepareCall("{CALL sp_eliminarDoctor(?, ?)}");
             stmtValidacion.setInt(1, idDoc);
             stmtValidacion.setString(2, nombreDoc);
             boolean hasResultSetValidacion = stmtValidacion.execute();
@@ -37,7 +42,7 @@ public class EliminarDoctorController {
                 }
             }
 
-            CallableStatement stmtValidarPass = conn.prepareCall("{CALL sp_validacionAdminPass(?)}"); /*Validación extra*/
+            stmtValidarPass = conn.prepareCall("{CALL sp_validacionAdminPass(?)}");
             stmtValidarPass.setString(1, passAdmin);
             boolean hasResultSetValidarBorrado = stmtValidarPass.execute();
 
@@ -56,8 +61,21 @@ public class EliminarDoctorController {
             }
         } catch (SQLException e) {
             System.out.println("Error al verificar las credenciales: " + e.getMessage());
-            
             return false;
+        } finally {
+            try {
+                if (stmtValidacion != null) {
+                    stmtValidacion.close();
+                }
+                if (stmtValidarPass != null) {
+                    stmtValidarPass.close();
+                }
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (SQLException e) {
+                System.out.println("Error al cerrar la conexión: " + e.getMessage());
+            }
         }
     }   
 }
