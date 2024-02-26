@@ -4,6 +4,7 @@
  */
 package Org.proyecto.system.graphics_packages.DoctorJF;
 
+import Org.proyecto.system.conexion.ConexionDB;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -149,19 +150,15 @@ public class ListarDoctoresJF extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       String url = "jdbc:mysql://localhost:3306/DB_ProyectoHospital";
-        String user = "root";
-        String password = "Aurorita0306@";
-
+        Connection conn = null;
         String query = "SELECT * FROM vw_listarDoctores";
-
         DefaultTableModel model = new DefaultTableModel();
 
-        try (Connection connection = DriverManager.getConnection(url, user, password);
-             Statement statement = connection.createStatement();
-             ResultSet resultSet = statement.executeQuery(query)) {
+        try {
+            conn = ConexionDB.getConnection();
+            Statement statement = conn.createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
 
-            
             model.addColumn("Nombre");
             model.addColumn("Apellido");
             model.addColumn("Especialidad");
@@ -170,7 +167,6 @@ public class ListarDoctoresJF extends javax.swing.JFrame {
             model.addColumn("Sexo");
             model.addColumn("Contraseña");
 
-            
             while (resultSet.next()) {
                 String nombreDoctor = resultSet.getString("nombreDoctor");
                 String apellidoDoctor = resultSet.getString("apellidoDoctor");
@@ -182,13 +178,22 @@ public class ListarDoctoresJF extends javax.swing.JFrame {
 
                 model.addRow(new Object[]{nombreDoctor, apellidoDoctor, especialidad, telefono, edad, sexo, contraseña});
             }
+
+            doctorTable.setModel(model);
         } catch (SQLException ex) {
             ex.printStackTrace();
+            // Manejar la excepción de alguna manera, como mostrar un mensaje de error al usuario
+        } finally {
+            // Cerrar la conexión en el bloque finally para garantizar que se cierre correctamente
+            try {
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+                // Manejar la excepción de cierre de la conexión
+            }
         }
-
-        SwingUtilities.invokeLater(() -> {
-        doctorTable.setModel(model);
-        });
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

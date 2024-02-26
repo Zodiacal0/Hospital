@@ -4,6 +4,7 @@
  */
 package Org.proyecto.system.graphics_packages.DoctorJF;
 
+import Org.proyecto.system.conexion.ConexionDB;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -168,52 +169,51 @@ public class BuscarDoctor extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
-        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/DB_ProyectoHospital", "root", "Aurorita0306@")) {
+        try {
+            Connection conn = ConexionDB.getConnection();
 
             try (CallableStatement stmt = conn.prepareCall("{CALL sp_buscarDoctor(?)}")) {
-            int idDoctor = 0;
-            try {
-                idDoctor = Integer.parseInt(ID.getText());
-            } catch (NumberFormatException e) {
-                System.out.println("No se puede convertir el número a INT");
-                return;
-            }
-            
-            stmt.setInt(1, idDoctor);
-            
-            try (ResultSet resultSet = stmt.executeQuery()) {
-
-                DefaultTableModel model = new DefaultTableModel();
-                model.addColumn("Nombre");
-                model.addColumn("Apellido");
-                model.addColumn("Especialidad");
-                model.addColumn("Telefono");
-                model.addColumn("Edad");
-                model.addColumn("Sexo");
-                model.addColumn("Contraseña");
-
-                while (resultSet.next()) {
-                    String nombreDoctor = resultSet.getString("nombreDoctor");
-                    String apellidoDoctor = resultSet.getString("apellidoDoctor");
-                    String especialidad = resultSet.getString("especialidad");
-                    int telefono = resultSet.getInt("telefono");
-                    int edad = resultSet.getInt("edad");
-                    String sexo = resultSet.getString("sexo");
-                    String contraseña = resultSet.getString("contraseña");
-
-                    model.addRow(new Object[]{nombreDoctor, apellidoDoctor, especialidad, telefono, edad, sexo, contraseña});
+                int idDoctor = 0;
+                try {
+                    idDoctor = Integer.parseInt(ID.getText());
+                } catch (NumberFormatException e) {
+                    System.out.println("No se puede convertir el número a INT");
+                    return;
                 }
-                SwingUtilities.invokeLater(() -> {
-                    doctorTable.setModel(model);
-                });
+
+                stmt.setInt(1, idDoctor);
+
+                try (ResultSet resultSet = stmt.executeQuery()) {
+                    DefaultTableModel model = new DefaultTableModel();
+                    model.addColumn("Nombre");
+                    model.addColumn("Apellido");
+                    model.addColumn("Especialidad");
+                    model.addColumn("Telefono");
+                    model.addColumn("Edad");
+                    model.addColumn("Sexo");
+                    model.addColumn("Contraseña");
+
+                    while (resultSet.next()) {
+                        String nombreDoctor = resultSet.getString("nombreDoctor");
+                        String apellidoDoctor = resultSet.getString("apellidoDoctor");
+                        String especialidad = resultSet.getString("especialidad");
+                        int telefono = resultSet.getInt("telefono");
+                        int edad = resultSet.getInt("edad");
+                        String sexo = resultSet.getString("sexo");
+                        String contraseña = resultSet.getString("contraseña");
+
+                        model.addRow(new Object[]{nombreDoctor, apellidoDoctor, especialidad, telefono, edad, sexo, contraseña});
+                    }
+                    SwingUtilities.invokeLater(() -> {
+                        doctorTable.setModel(model);
+                    });
+                }
             }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error al buscar al doctor: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
-    } catch (SQLException ex) {
-        ex.printStackTrace();
-        // Mostrar un mensaje de error al usuario
-        JOptionPane.showMessageDialog(this, "Error al buscar al doctor: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-    }
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
