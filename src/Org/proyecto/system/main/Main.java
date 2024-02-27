@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
 package Org.proyecto.system.main;
-import Org.proyecto.system.graphics_packages.LoginAdminJF;
+import Org.proyecto.system.graphics_packages.LoginGeneral;
 /**
  *
  * @author Javier
@@ -14,12 +14,9 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
-        LoginAdminJF login1 = new LoginAdminJF();
-        login1.setVisible(true);
-        login1.setLocationRelativeTo(null);
-        
-        System.out.println("Prueba");
+        LoginGeneral general = new LoginGeneral();
+        general.setVisible(true);
+        general.setLocationRelativeTo(null);
     }
     
 }
