@@ -4,12 +4,8 @@
  */
 package Org.proyecto.system.graphics_packages.PacientesJF;
 
-import Org.proyecto.system.graphics_packages.*;
-import Org.proyecto.system.graphics_packages.DoctorJF.ActualizarDoctor;
-import Org.proyecto.system.graphics_packages.DoctorJF.AgregarDoctorJF;
-import Org.proyecto.system.graphics_packages.DoctorJF.BuscarDoctor;
-import Org.proyecto.system.graphics_packages.DoctorJF.EliminarDoctorJF;
-import Org.proyecto.system.graphics_packages.DoctorJF.ListarDoctoresJF;
+import Org.proyecto.system.graphics_packages.FarmaciaJF.ListarMedicamentos;
+
 
 /**
  *
@@ -49,21 +45,23 @@ public class OpcionesPaciente extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(0, 102, 255));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Org/proyecto/system/utilities/Img/2.png"))); // NOI18N
+        jLabel1.setText("jLabel1");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(206, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(184, 184, 184))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(197, 197, 197)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(220, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(165, 165, 165))
         );
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, 0, 640, 170));
@@ -171,9 +169,9 @@ public class OpcionesPaciente extends javax.swing.JFrame {
 
     private void showDoctorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showDoctorActionPerformed
         dispose();
-        ListarDoctoresJF listar = new ListarDoctoresJF();
-        listar.setVisible(true);
-        listar.setLocationRelativeTo(null);
+        ListarMedicamentos medicina = new ListarMedicamentos();
+        medicina.setVisible(true);
+        medicina.setLocationRelativeTo(null);
     }//GEN-LAST:event_showDoctorActionPerformed
 
    

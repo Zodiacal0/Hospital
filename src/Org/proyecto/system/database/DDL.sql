@@ -11,7 +11,7 @@ CREATE TABLE Administrador(
     PRIMARY KEY PK_idAdministrador (idAdministrador)
 )ENGINE InnoDB;
 
-CREATE TABLE Medicinas(
+CREATE TABLE Medicina(
 	idMedicina INT(4),
     nombreMedicina VARCHAR(32),
     cantidad INT(4),descripcion VARCHAR(255),

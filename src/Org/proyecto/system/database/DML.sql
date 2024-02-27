@@ -291,9 +291,10 @@ BEGIN
 END$$
 DELIMITER ;
 
-DELIMITER $$
-CREATE PROCEDURE sp_listarMedicina()
-BEGIN
+CALL sp_crearMedicina(0001,'Valpakine',300,'Antidepresivos',250.00);
+
+
+CREATE VIEW vw_listarMedicinas AS
 	SELECT idMedicina,nombreMedicina,cantidad,descripcion,precio
     FROM medicina;
 END$$

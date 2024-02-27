@@ -9,6 +9,7 @@ import Org.proyecto.system.graphics_packages.DoctorJF.AgregarDoctorJF;
 import Org.proyecto.system.graphics_packages.DoctorJF.BuscarDoctor;
 import Org.proyecto.system.graphics_packages.DoctorJF.EliminarDoctorJF;
 import Org.proyecto.system.graphics_packages.DoctorJF.ListarDoctoresJF;
+import Org.proyecto.system.graphics_packages.FarmaciaJF.AgregarMedicinasJF;
 
 /**
  *
@@ -41,7 +42,8 @@ public class OpcionesAdminJF extends javax.swing.JFrame {
         updateDoctor = new javax.swing.JButton();
         showDoctor = new javax.swing.JButton();
         deleteDoctor = new javax.swing.JButton();
-        searchDoctor = new javax.swing.JButton();
+        ADDMed = new javax.swing.JButton();
+        searchDoctor1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -108,12 +110,21 @@ public class OpcionesAdminJF extends javax.swing.JFrame {
             }
         });
 
-        searchDoctor.setBackground(new java.awt.Color(102, 102, 102));
-        searchDoctor.setForeground(new java.awt.Color(255, 255, 255));
-        searchDoctor.setText("Buscar Doctores");
-        searchDoctor.addActionListener(new java.awt.event.ActionListener() {
+        ADDMed.setBackground(new java.awt.Color(102, 102, 102));
+        ADDMed.setForeground(new java.awt.Color(255, 255, 255));
+        ADDMed.setText("Agregar Medicamento");
+        ADDMed.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchDoctorActionPerformed(evt);
+                ADDMedActionPerformed(evt);
+            }
+        });
+
+        searchDoctor1.setBackground(new java.awt.Color(102, 102, 102));
+        searchDoctor1.setForeground(new java.awt.Color(255, 255, 255));
+        searchDoctor1.setText("Buscar Doctores");
+        searchDoctor1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchDoctor1ActionPerformed(evt);
             }
         });
 
@@ -122,20 +133,19 @@ public class OpcionesAdminJF extends javax.swing.JFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(41, 41, 41)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addComponent(dorctorAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(47, 47, 47)
-                        .addComponent(updateDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(41, 41, 41)
-                        .addComponent(showDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(135, 135, 135)
-                        .addComponent(deleteDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(48, 48, 48)
-                        .addComponent(searchDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(52, Short.MAX_VALUE))
+                    .addComponent(dorctorAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(deleteDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(47, 47, 47)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(updateDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(searchDoctor1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(41, 41, 41)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(showDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ADDMed))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -148,7 +158,8 @@ public class OpcionesAdminJF extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(deleteDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(searchDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(searchDoctor1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ADDMed, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28))
         );
 
@@ -213,16 +224,21 @@ public class OpcionesAdminJF extends javax.swing.JFrame {
         listar.setLocationRelativeTo(null);
     }//GEN-LAST:event_showDoctorActionPerformed
 
-    private void searchDoctorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchDoctorActionPerformed
+    private void ADDMedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ADDMedActionPerformed
         dispose();
-        BuscarDoctor buscar = new BuscarDoctor();
+        AgregarMedicinasJF buscar = new AgregarMedicinasJF();
         buscar.setVisible(true);
         buscar.setLocationRelativeTo(null);
-    }//GEN-LAST:event_searchDoctorActionPerformed
+    }//GEN-LAST:event_ADDMedActionPerformed
+
+    private void searchDoctor1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchDoctor1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_searchDoctor1ActionPerformed
 
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton ADDMed;
     private javax.swing.JButton deleteDoctor;
     private javax.swing.JButton dorctorAdd;
     private javax.swing.JLabel jLabel1;
@@ -230,7 +246,7 @@ public class OpcionesAdminJF extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JButton searchDoctor;
+    private javax.swing.JButton searchDoctor1;
     private javax.swing.JButton showDoctor;
     private javax.swing.JButton updateDoctor;
     // End of variables declaration//GEN-END:variables
