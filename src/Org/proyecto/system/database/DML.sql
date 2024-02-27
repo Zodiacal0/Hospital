@@ -280,3 +280,32 @@ BEGIN
     WHERE idCita = idCitas;
 END$$
 DELIMITER ;
+
+-- CRUD MEDICINA
+
+DELIMITER $$
+CREATE PROCEDURE sp_crearMedicina(IN idMedicina INT(4), IN nombreMedicina VARCHAR(32), IN cantidad INT(4), IN descripcion VARCHAR(255), IN precio DECIMAL(10,2))
+BEGIN
+	INSERT INTO Medicina(idMedicina,nombreMedicina,cantidad,descripcion,precio)
+		VALUES(idMedicina,nombreMedicina,cantidad,descripcion,precio);
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE PROCEDURE sp_listarMedicina()
+BEGIN
+	SELECT idMedicina,nombreMedicina,cantidad,descripcion,precio
+    FROM medicina;
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE PROCEDURE sp_updateMedicina(IN idMedicina INT(4), IN newNombreMedicina VARCHAR(32), IN newCantidad INT(4), IN newDescripcion VARCHAR(255), IN newPrecio DECIMAL(10,2))
+BEGIN
+	UPDATE Medicina
+    SET nombreMedicina = newNombreMedicina  ,cantidad = newCantidad ,descripcion = newDescripcion,precio = newPrecio
+    WHERE idMedicina = idMedicina;
+END$$
+DELIMITER ;
+
+
