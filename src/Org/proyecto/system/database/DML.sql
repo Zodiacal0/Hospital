@@ -163,6 +163,14 @@ END$$
 DELIMITER ;
 
 
+DELIMITER $$
+CREATE PROCEDURE sp_listarEspecialidades()
+BEGIN
+	SELECT especialidad  
+    FROM Doctor;
+END$$
+DELIMITER ;
+
 --  CRUD completo pacientes
 
 DELIMITER $$
