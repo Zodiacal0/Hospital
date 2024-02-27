@@ -272,3 +272,11 @@ BEGIN
 END $$
 DELIMITER ;
 
+DELIMITER $$
+CREATE PROCEDURE sp_verEstatus(IN idCitas INT(4))
+BEGIN
+	SELECT idCita,motivo,especialidadRequerida,doctorRequerido,fecha,hora,estado
+    FROM Citas
+    WHERE idCita = idCitas;
+END$$
+DELIMITER ;
