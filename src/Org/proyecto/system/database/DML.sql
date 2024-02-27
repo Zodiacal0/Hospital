@@ -300,6 +300,8 @@ CREATE VIEW vw_listarMedicinas AS
 END$$
 DELIMITER ;
 
+select * from vw_listarMedicinas;
+
 DELIMITER $$
 CREATE PROCEDURE sp_updateMedicina(IN idMedicina INT(4), IN newNombreMedicina VARCHAR(32), IN newCantidad INT(4), IN newDescripcion VARCHAR(255), IN newPrecio DECIMAL(10,2))
 BEGIN
