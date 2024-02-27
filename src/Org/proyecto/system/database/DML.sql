@@ -28,7 +28,6 @@ BEGIN
 END$$
 DELIMITER ;
 
-CALL sp_actualizarAdministrador(0001,'admin1','admin1','passNew');
 
 DELIMITER $$
 CREATE PROCEDURE sp_eliminarAdministrador(IN idAdministradorBorrar INT(4))
@@ -38,7 +37,6 @@ BEGIN
 END$$
 DELIMITER ;
 
-CALL sp_eliminarAdministrador(0001);
 
 DELIMITER $$
 CREATE PROCEDURE sp_buscarAdministrador(IN idAdministradorBuscar INT(4))
@@ -107,7 +105,6 @@ BEGIN
 END$$
 DELIMITER ;
 
-CALL sp_actualizarAdministradorCodigo(0001);
 
 -- SELECT * FROM Administrador;
 
@@ -121,6 +118,10 @@ END$$
 DELIMITER ;
 
 CALL sp_agregarDoctor(0001,'Rafael','Córdoba','Urología','M','24',12345678,'pass123');
+CALL sp_agregarDoctor(0002,'María','González','Pediatría','F','32',87654321,'abc123');
+CALL sp_agregarDoctor(0003,'Juan','Pérez','Cardiología','M','40',56789012,'doctor456');
+CALL sp_agregarDoctor(0004,'Ana','López','Dermatología','F','28',98765432,'passAna789');
+CALL sp_agregarDoctor(0005,'Carlos','Martínez','Oftalmología','M','35',23456789,'martinezPass');
 
 CREATE VIEW vw_listarDoctores AS
 SELECT nombreDoctor,apellidoDoctor,especialidad,telefono,edad,sexo,contraseña
@@ -141,7 +142,6 @@ DELIMITER ;
 
 SELECT * FROM Doctor;
 
-CALL sp_actualizarDoctores(0002,'Javier','Córdoba','Neurología','27',23456789,'dispo');
 
 -- !!!DUDA
 
@@ -170,6 +170,8 @@ BEGIN
     FROM Doctor;
 END$$
 DELIMITER ;
+
+CALL sp_listarEspecialidades();
 
 --  CRUD completo pacientes
 
@@ -202,7 +204,6 @@ DELIMITER ;
  END$$ 
  DELIMITER ;
  
- CALL sp_actualizarPaciente(0001,'ERICK','CAMBIÓ',36,'wbosNEW');
  
  DELIMITER $$
  CREATE PROCEDURE sp_buscarPaciente(IN idPaciente INT(4))
@@ -223,7 +224,6 @@ DELIMITER ;
  END$$
  DELIMITER ;
  
- CALL sp_eliminarPaciente(0001);
  
  DELIMITER $$
 CREATE PROCEDURE sp_validacionPacientes(IN userPaciente VARCHAR(32), IN pass VARCHAR (32))
@@ -251,6 +251,8 @@ BEGIN
     FROM Citas;
 END$$
 DELIMITER ;
+
+CALL sp_listarCitas();
 
 DELIMITER $$
 CREATE PROCEDURE sp_updateCitas(IN idCita int, IN newMotivo VARCHAR(255),IN newEspecialidadRequerida VARCHAR(32), IN newDoctorRequerido VARCHAR(32),IN newFecha date, IN newHora time,in newEstado VARCHAR(32))
