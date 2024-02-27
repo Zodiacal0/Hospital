@@ -147,7 +147,10 @@ public class LoginPacienteJF extends javax.swing.JFrame {
 
         if (loginController.ValidacionPaciente(nombreUsuario, contraseña)) {
             JOptionPane.showMessageDialog(this, "Inicio de sesión exitoso", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-            
+            dispose();
+            AgendarCitaJF cita = new AgendarCitaJF();
+            cita.setVisible(true);
+            cita.setLocationRelativeTo(null);
         } else {
             JOptionPane.showMessageDialog(this, "Credenciales incorrectas", "Error", JOptionPane.ERROR_MESSAGE);
         }
