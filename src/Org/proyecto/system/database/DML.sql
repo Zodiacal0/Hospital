@@ -173,6 +173,17 @@ DELIMITER ;
 
 CALL sp_listarEspecialidades();
 
+DELIMITER $$
+CREATE PROCEDURE sp_verificarCredendialesDoc(IN nombreDoctor1 VARCHAR(32), IN contraseña1 VARCHAR(32))
+BEGIN
+	SELECT COUNT(*)
+    FROM Doctor
+    WHERE nombreDoctor = nombreDoctor1 AND contraseña = contraseña1;
+END$$
+DELIMITER ;
+
+CALL sp_verificarCredendialesDoc('Rafael','pass123');
+
 --  CRUD completo pacientes
 
 DELIMITER $$
@@ -244,15 +255,18 @@ BEGIN
 END$$
 DELIMITER ;
 
-DELIMITER $$
-CREATE PROCEDURE sp_listarCitas()
-BEGIN
+CALL sp_crearCita(0001,'Dolor de cabeza','Neurología','Rafael','2024-10-18','02:30:00','Pendiente');
+CALL sp_crearCita(0002,'Dolor de cabeza','Neurología','Rafael','2024-10-18','02:30:00','Pendiente');
+CALL sp_crearCita(0003,'Dolor de estómago','Gastroenterología','Ana','2024-10-19','09:45:00','Pendiente');
+CALL sp_crearCita(0004,'Problemas cardíacos','Cardiología','Juan','2024-10-20','11:15:00','Pendiente');
+CALL sp_crearCita(0005,'Dolor de espalda','Ortopedia','María','2024-10-21','15:20:00','Pendiente');
+
+
+CREATE VIEW sp_listarCitas AS
 	SELECT idCita,motivo,especialidadRequerida,doctorRequerido,fecha,hora
     FROM Citas;
-END$$
-DELIMITER ;
 
-CALL sp_listarCitas();
+SELECT * FROM sp_listarCitas;
 
 DELIMITER $$
 CREATE PROCEDURE sp_updateCitas(IN idCita int, IN newMotivo VARCHAR(255),IN newEspecialidadRequerida VARCHAR(32), IN newDoctorRequerido VARCHAR(32),IN newFecha date, IN newHora time,in newEstado VARCHAR(32))
@@ -271,6 +285,16 @@ BEGIN
     WHERE hora = hora;
 END $$
 DELIMITER ;
+
+DELIMITER $$
+CREATE PROCEDURE sp_eliminarCita(IN idCita1 INT(4))
+BEGIN
+	DELETE FROM Citas
+    WHERE idCita = idCita1;
+END$$
+DELIMITER ;
+
+CALL sp_eliminarCita(0001);
 
 DELIMITER $$
 CREATE PROCEDURE sp_verEstatus(IN idCitas INT(4))
