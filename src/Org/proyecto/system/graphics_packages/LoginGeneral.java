@@ -4,6 +4,7 @@
  */
 package Org.proyecto.system.graphics_packages;
 
+import Org.proyecto.system.graphics_packages.DoctorJF.LoginDocJF;
 import Org.proyecto.system.graphics_packages.PacientesJF.LoginPacienteJF;
 
 /**
@@ -91,6 +92,11 @@ public class LoginGeneral extends javax.swing.JFrame {
         jButton2.setBackground(new java.awt.Color(102, 102, 102));
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Doctor");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -151,6 +157,13 @@ public class LoginGeneral extends javax.swing.JFrame {
         paciente.setVisible(true);
         paciente.setLocationRelativeTo(null);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        dispose();
+        LoginDocJF doc = new LoginDocJF();
+        doc.setVisible(true);
+        doc.setLocationRelativeTo(null);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
